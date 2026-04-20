@@ -1,17 +1,19 @@
-# Database files
+# Database files — regenerated from data/*.parquet via create_db.py
 *.db
 *.duckdb
 *.duckdb.wal
 *.sqlite
 *.sqlite3
-data/
 
-# dbt
+# dbt build artifacts
 target/
 dbt_packages/
 logs/
-.dbt/
 package-lock.yml
+
+# Ignore dbt profile internals, but KEEP the shared profiles.yml tracked
+.dbt/*
+!.dbt/profiles.yml
 
 # Python
 __pycache__/
@@ -105,7 +107,6 @@ Desktop.ini
 
 # Sensitive files
 secrets.yml
-profiles.yml
 credentials.json
 keys/
 generate_ecommerce_data.py

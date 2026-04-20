@@ -1,0 +1,3 @@
+themeSet:
+  - ./class_material/themes
+allowLocalFiles: true

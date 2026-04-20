@@ -1,0 +1,311 @@
+/* @theme ie-class */
+
+@import 'default';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --ie-navy:       #153360;
+  --ie-navy-dark:  #0f2547;
+  --ie-navy-mid:   #1e4680;
+  --ie-navy-soft:  #2d4a7a;
+  --ie-accent:     #c6893d;
+  --ie-accent-lt:  #f2b97a;
+  --ie-text:       #1a1f2e;
+  --ie-muted:      #7a8599;
+  --ie-rule:       #e5e9f0;
+  --ie-rule-soft:  #ebeef4;
+  --ie-surface:    #f7f8fc;
+  --ie-surface-2:  #f1f4fa;
+  --ie-pagination: #b4bcca;
+}
+
+/* Top padding clears the absolute header (top: 22px + logo ~50px + rule ~10px + breathing room). */
+section {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 26px;
+  line-height: 1.55;
+  color: var(--ie-text);
+  background: #ffffff;
+  padding: 115px 80px 60px;
+  place-content: start;
+}
+
+/* Helper: ![center](...) centers an image horizontally. */
+img[alt~="center"] { display: block; margin: 0 auto; }
+
+h1, h2, h3, h4 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  color: var(--ie-navy);
+  letter-spacing: -0.015em;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 46px;
+  line-height: 1.15;
+  margin-bottom: 0.35em;
+}
+
+h2 {
+  font-size: 34px;
+  line-height: 1.2;
+  padding-bottom: 0.25em;
+  border-bottom: 2px solid var(--ie-rule);
+  margin-bottom: 0.7em;
+}
+
+h3 {
+  font-size: 26px;
+  color: var(--ie-navy-soft);
+  margin-bottom: 0.4em;
+}
+
+h4 {
+  font-size: 22px;
+  color: var(--ie-navy-soft);
+}
+
+p, ul, ol {
+  margin: 0.55em 0;
+}
+
+ul, ol {
+  padding-left: 1.3em;
+}
+
+li {
+  margin: 0.3em 0;
+}
+
+li::marker {
+  color: var(--ie-navy);
+}
+
+strong { color: var(--ie-navy); font-weight: 600; }
+em     { color: var(--ie-navy-soft); }
+
+a {
+  color: var(--ie-navy);
+  text-decoration: underline;
+  text-decoration-color: var(--ie-accent);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+
+code {
+  font-family: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.86em;
+  background: var(--ie-surface-2);
+  color: var(--ie-navy);
+  padding: 0.08em 0.38em;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+pre {
+  background: var(--ie-surface);
+  border: 1px solid var(--ie-rule);
+  border-left: 4px solid var(--ie-navy);
+  border-radius: 6px;
+  padding: 0.9em 1.1em;
+  font-size: 0.80em;
+  line-height: 1.55;
+  box-shadow: 0 2px 6px rgba(21, 51, 96, 0.06);
+  overflow: hidden;
+}
+
+pre code {
+  background: transparent;
+  color: var(--ie-text);
+  padding: 0;
+  font-size: inherit;
+  font-weight: 400;
+}
+
+.hljs-keyword,
+.hljs-built_in,
+.hljs-literal       { color: #9b3a8c; font-weight: 500; }
+.hljs-string,
+.hljs-regexp        { color: #2f7d3b; }
+.hljs-number,
+.hljs-symbol        { color: #b06518; }
+.hljs-comment,
+.hljs-quote         { color: var(--ie-muted); font-style: italic; }
+.hljs-function,
+.hljs-title,
+.hljs-type          { color: var(--ie-navy-mid); font-weight: 500; }
+.hljs-variable,
+.hljs-attr,
+.hljs-attribute,
+.hljs-params        { color: var(--ie-navy-mid); }
+.hljs-meta,
+.hljs-tag           { color: #6a7280; }
+
+table {
+  margin: 0.8em auto;
+  font-size: 0.92em;
+  box-shadow: 0 1px 3px rgba(21, 51, 96, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+thead th {
+  background: var(--ie-navy);
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.65em 1em;
+  text-align: left;
+  border: none;
+}
+
+tbody td {
+  padding: 0.55em 1em;
+  border-bottom: 1px solid var(--ie-rule);
+  border-left: none;
+  border-right: none;
+}
+
+tbody tr:nth-child(even) {
+  background: var(--ie-surface);
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+blockquote {
+  border-left: 4px solid var(--ie-accent);
+  background: #fdf8f0;
+  padding: 0.65em 1.1em;
+  margin: 0.8em 0;
+  font-style: italic;
+  color: #3a3f4a;
+  border-radius: 0 4px 4px 0;
+}
+
+blockquote > :first-child { margin-top: 0; }
+blockquote > :last-child  { margin-bottom: 0; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--ie-rule);
+  margin: 0.9em 0;
+}
+
+section header {
+  position: absolute;
+  top: 22px;
+  left: 40px;
+  right: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  color: var(--ie-muted);
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid var(--ie-rule-soft);
+  background: none;
+  margin: 0;
+}
+
+section header img {
+  margin: 0;
+  display: block;
+}
+
+section footer {
+  color: #9aa3b2;
+  font-size: 12px;
+  bottom: 20px;
+}
+
+section::after {
+  font-size: 13px;
+  color: var(--ie-pagination);
+  padding: 0 30px 18px 0;
+  font-weight: 400;
+}
+
+/* Title slide — use <!-- _class: lead -->. Padding differs (no header to clear). */
+section.lead {
+  background: linear-gradient(135deg, var(--ie-navy-dark) 0%, #1e4a8a 100%);
+  color: #ffffff;
+  padding: 100px 110px;
+  justify-content: center;
+}
+
+section.lead h1,
+section.lead h2,
+section.lead h3 {
+  color: #ffffff;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+section.lead h1 {
+  font-size: 62px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 0.35em;
+}
+
+section.lead h2 {
+  font-size: 38px;
+  font-weight: 400;
+  color: #c8d4e8;
+  margin-bottom: 0.8em;
+}
+
+section.lead strong        { color: var(--ie-accent-lt); }
+section.lead a             { color: var(--ie-accent-lt); text-decoration-color: var(--ie-accent-lt); }
+
+section.lead h1::after {
+  content: '';
+  display: block;
+  width: 90px;
+  height: 3px;
+  background: var(--ie-accent);
+  margin-top: 0.35em;
+}
+
+section.lead header,
+section.lead footer,
+section.lead::after {
+  display: none;
+}
+
+/* Chapter divider — use <!-- _class: divider -->. Padding differs (no header to clear). */
+section.divider {
+  background: #f5f7fb;
+  padding: 100px 110px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+section.divider h1 {
+  color: var(--ie-navy);
+  font-size: 54px;
+  border: none;
+  padding: 0;
+  margin-bottom: 0.2em;
+}
+
+section.divider h1::before {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--ie-accent);
+  margin-bottom: 0.6em;
+}
+
+section.divider h2 {
+  color: var(--ie-muted);
+  font-weight: 400;
+  border: none;
+  padding: 0;
+  font-size: 28px;
+}

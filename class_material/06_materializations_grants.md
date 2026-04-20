@@ -1,22 +1,17 @@
 ---
 marp: true
+theme: ie-class
+paginate: true
+size: 16:9
+math: katex
 author:
   - name: Daniel Garcia
   - email: dgarciah@faculty.ie.edu
   - url: www.linkedin.com/in/dgarhdez
-header: ![center width:100px](../img/ie_logo.png)
-size: 16:9
-footer: "Analytics Engineering, dgarciah@faculty.ie.edu"
-theme: default
-math: katex
-style: |
-    img[alt~="center"] {
-      display: block;
-      margin: 0 auto;
-    }
+header: '<img src="../img/ie_logo.png" width="90"><span>Analytics Engineering &middot; dgarciah@faculty.ie.edu</span>'
 ---
 
-<!-- _color: "rgb(31,56,94)" -->
+<!-- _class: lead -->
 
 # Analytics Engineering: Session 6
 

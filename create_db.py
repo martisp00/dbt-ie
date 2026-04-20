@@ -1,54 +1,30 @@
 import argparse
-import os
+from pathlib import Path
 
 import duckdb
 
 
-def create_database(db_path="./data/my_database.duckdb"):
-    """
-    Creates and populates the DuckDB database with data from Parquet files.
-    """
-    # Connect to DuckDB (creates the file if it doesn't exist)
+def create_database(db_path: str, data_dir: str = "data") -> None:
+    """Create and populate a DuckDB database from every Parquet file in `data_dir`."""
+    data_path = Path(data_dir)
+    parquet_files = sorted(data_path.glob("*.parquet"))
+    if not parquet_files:
+        raise FileNotFoundError(f"No Parquet files found in {data_path.resolve()}")
+
     conn = duckdb.connect(db_path)
-
     try:
-        # Get all Parquet files in the data directory
-        data_dir = "./data"
-        if not os.path.exists(data_dir):
-            print(f"Data directory '{data_dir}' not found.")
-            return
-
-        parquet_files = [f for f in os.listdir(data_dir) if f.endswith(".parquet")]
-
-        if not parquet_files:
-            print(f"No Parquet files found in {data_dir}.")
-            return
-
-        print(f"Found Parquet files: {parquet_files}")
-
-        # Create tables for each Parquet file
-        for parquet_file in parquet_files:
-            table_name = os.path.splitext(parquet_file)[0]  # Remove .parquet extension
-            parquet_path = os.path.join(data_dir, parquet_file)
+        for parquet in parquet_files:
+            table_name = parquet.stem
             conn.execute(
-                f"""
-                CREATE TABLE IF NOT EXISTS {table_name} AS
-                SELECT * FROM read_parquet('{parquet_path}')
-            """
+                "CREATE TABLE IF NOT EXISTS "
+                f"{table_name} AS SELECT * FROM read_parquet(?)",
+                [str(parquet)],
             )
             print(f"Created table: {table_name}")
-
-        print("Database created and populated successfully!")
-
-        # Optional: Show table info
-        tables = conn.execute("SHOW TABLES").fetchall()
-        print("Tables in database:", [table[0] for table in tables])
-
-    except Exception as e:
-        print(f"Error creating database: {e}")
-
     finally:
         conn.close()
+
+    print(f"Database written to {Path(db_path).resolve()}")
 
 
 if __name__ == "__main__":
@@ -61,8 +37,5 @@ if __name__ == "__main__":
         default="my_database",
         help="Name of the database file (without .duckdb extension). Default: my_database",
     )
-
     args = parser.parse_args()
-    db_path = f"{args.database}.duckdb"
-
-    create_database(db_path)
+    create_database(f"{args.database}.duckdb")
